@@ -15,7 +15,7 @@ android {
                 cppFlags "-std=c++11"
                 cppFlags "-fexceptions", "-frtti"
 
-                arguments '-DANDROID_STL=c++_shared', '-DANDROID_TOOLCHAIN=gcc'
+                arguments '-DANDROID_STL=c++_shared', '-DANDROID_TOOLCHAIN=clang'
             }
         }
         ndk {
@@ -55,6 +55,12 @@ android {
     }
 }
 
+repositories{
+    maven{
+        url "https://jitpack.io"
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -66,4 +72,6 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.github.kenglxn.QRGen:android:2.3.0'
+    compile 'me.dm7.barcodescanner:zxing:1.9.3'
 }

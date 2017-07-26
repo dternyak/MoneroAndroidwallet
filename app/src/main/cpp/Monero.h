@@ -1,17 +1,15 @@
-//
-// Created by gkruj on 6/18/2017.
-//
 
 #ifndef MONEROTEST_MONERO_H
 
 #define MONEROTEST_MONERO_H
-//
-// Created by gkruj on 6/18/2017.
-//
 
 #include <jni.h>
 #include <string>
 #include <stdlib.h>
+#include <exception>
+#include <stdexcept>
+
+
 #include "cryptonote_basic/cryptonote_basic.h"
 
 #include "cryptonote_core/blockchain.h"
@@ -49,82 +47,53 @@ public:
     string pending_tx = "";
     AndroidWallet();
 
-    ~AndroidWallet(){
-        if(wallet2!= nullptr)
-        {
-            wallet2->store();
-        }
-        delete wallet2;
-    }
+    ~AndroidWallet();
 
     bool Check_Connection();
 
-    void
-    transfer(string address, uint64_t ammount, string paymentId, uint32_t mixin, uint32_t priority);
+    void transfer(string address, uint64_t ammount, string paymentId, uint32_t priority);
 
     bool init(string DaemonAddress, string Password, string WalletName, bool testnet, int loglevel);
 
-    bool GenerateWallet(string path, string Name, string Password);
+    bool GenerateWallet(string path, string Password);
+
     std::multimap<uint64_t, std::pair<bool,std::string>> get_transfers();
 
-    double Balance() {
-        uint64_t bal =  wallet2->balance();
+    double Balance();
 
-        double final = (bal / (double) 1000000000000);
+    double UnlockedBalance();
 
-        return final;
-    }
+    uint64_t WalletLocalHeight();
 
-    double UnlockedBalance() {
+    uint64_t DaemonHeight();
 
-        uint64_t ubal =  wallet2->unlocked_balance();
+    void refresh();
 
-        double final = (ubal / (double) 1000000000000);
+    string address(){ return wallet2->get_account().get_public_address_str(wallet2->testnet()); }
 
-        return final;
-    }
-    uint64_t WalletLocalHeight(){
-        local_height = wallet2->get_blockchain_current_height();
-        return local_height;
-    }
+    string get_payment_id();
 
-    uint64_t DaemonHeight(){
-        string err;
-         bc_height = wallet2->get_daemon_blockchain_height(err);
+    bool isnull();
 
-        uint32_t version =0 ;
+    bool check_address(string address);
 
-        if(! wallet2->check_connection(&version)){
-            return 0;
-        }
+    bool check_payment_id(string payment_id_str);
 
-        if(err.empty())
-        {
-            return bc_height;
-        } else{
-            return 0;
-        }
-    }
+    bool deinit();
+    bool reinit(string address);
 
-    void refresh(){
-        uint32_t version =0;
-        bool connection = wallet2->check_connection(&version);
+    string getDaemonaddress();
 
-        if(connection){
-            wallet2->refresh();
+    string getIntegratedAddress(string _paymentID);
 
-            wallet2->store();
-        }
-    }
+    bool Generatefromseed(string path, string seed,string WalletName,string password,bool testnet);
 
-
+    bool GeneratefromMnemonic(string path ,string mnemonic,string language,string WalletName,string password,bool testnet);
 
 private:
     uint64_t local_height = 0;
     uint64_t bc_height = 0 ;
     tools::wallet2 *wallet2 = nullptr;
-
-
 
 };
 };

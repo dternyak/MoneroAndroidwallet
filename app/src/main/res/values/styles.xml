@@ -4,7 +4,47 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:listDivider">@color/menu_divider_line_color</item>
+        <item name="android:colorAccent">@color/menu_background_color</item>
     </style>
 
+
+    <style name="QRGeneratorTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:background">@color/menu_background_color</item>
+        <item name="actionBarItemBackground">@color/menu_font_color</item>
+    </style>
+
+    <style name="SettingsTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="actionBarItemBackground">@color/menu_font_color</item>
+        <item name="android:icon">@color/menu_font_color</item>
+        <item name="android:itemTextAppearance">@style/myCustomMenuTextApearance</item>
+    </style>
+
+    <style name="ImageButtonStyle" parent="Widget.AppCompat.ImageButton">
+        <item name="android:tint">@color/menu_font_color</item>
+        <item name="background">@color/menu_background_color</item>
+        <item name="android:backgroundTint">@color/menu_background_color</item>
+    </style>
+
+    <style name="myCustomMenuTextApearance" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="android:tint">@color/menu_font_color</item>
+        <item name="background">@color/menu_background_color</item>
+        <item name="android:backgroundTint">@color/menu_background_color</item>
+    </style>
+
+
+    <style name="slash_art">
+        <item name="android:layout_width">@dimen/splashArtSize</item>
+        <item name="android:layout_height">@dimen/splashArtSize</item>
+        <item name="android:background">@color/menu_font_color</item>
+    </style>
+
+    <style name="slash_text">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/menu_background_color</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
 </resources>

@@ -34,7 +34,12 @@ At this moment, all the navigation is contain in a drawerLayout that holds a
 fragment. Only one (1) activity is being used. The toolbar changes custom views
 depending  on the fragment that the user is currently located.
 
+### How to Contribute
+A good way to help is to test, and report bugs. ( Please wait until the application is stable enough for testing first)
 
+Patches are preferably to be sent via a GitHub pull request. If that can't be done, contact me either on IRC, reddit or directly on GitHub and something can be figured out
+
+Patches should be self contained. A good rule of thumb is to have one patch per separate issue, feature, or logical change. Also, no other changes, such as random whitespace changes or reindentation. Following the code style of the particular chunk of code you're modifying is encourgaged. Proper squashing should be done (eg, if you're making a buggy patch, then a later patch to fix the bug, both patches should be merged). 
 
 ### Currently completed but might be missing more testing
 
@@ -44,17 +49,16 @@ depending  on the fragment that the user is currently located.
 - [x] Sync wallet to remote node.
 - [x] Send transactions (little buggy, needs more testing).
 - [x] Display all transactions from wallet into a `ListView`.
-
+- [x] Ability to generate a QR image using the integrated address.
+- [x] Ability to read a QR image and validate data. (Send Fragment)
 ### What is currently missing?
 
 - [] \(Optional) Splash screen to give a better experience to user while loading libs.
 - [] Initial activity to either generate a new wallet or load one from file storage.
 		**note:** *For loading wallet from location I'd like to using some sort of file 
 		explorer to allow the user to chose the location. However, i'm up for ideas.*
-
 - [] Functionality to select a remote node in the settings fragment.
-- [] Ability to generate a QR image using the integrated address. (Receive Fragment)
-- [] Ability to read a QR image and validate data. (Send Fragment)
+- [] Wallet will automatically update itself whenever the phone is plugged and connect to WIFI.
 - [] if you have more ideas or features, please PM me.
 
 

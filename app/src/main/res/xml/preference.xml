@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Select node to connect"
+        android:key="category_select_node">
+
+
+        <EditTextPreference
+            android:id="@+id/ip_port_edittext"
+            android:key="editTextAddress"
+            android:title="(IP:PORT ex: 127.0.0.1:8080)"
+            android:textColorHighlight="@color/gray_title_color"
+            android:shadowColor="@color/gray_title_color"
+            android:textColorLink="@color/gray_title_color"
+            android:textColor="@color/gray_title_color"
+            android:dialogTitle="Enter IP and Port"
+            />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="select network preference"
+        android:key="category_network_pref">
+
+        <ListPreference
+            android:key="network_list_key"
+            android:title="network_list_title"
+            android:entryValues="@array/networkPref"
+            android:entries="@array/networkPref"/>
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+
+        android:title="Sync wallet when sleep"
+        android:key="category_sync_at_night">
+
+        <SwitchPreference
+            android:title="Auto-sync at nights"
+            android:key="switch_sync_night"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
